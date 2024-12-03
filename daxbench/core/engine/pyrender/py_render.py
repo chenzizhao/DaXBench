@@ -139,9 +139,10 @@ class ParticlePyRenderer(BasicPyRenderer):
 
         color, depth = self.renderer.render(self.scene)
         if visualize:
-            cv2.imshow('color', color[:, :, ::-1])
+            # cv2.imshow('color', color[:, :, ::-1])
             # cv2.imshow('depth', depth)
-            cv2.waitKey(10)
+            # cv2.waitKey(10)
+            cv2.imwrite('results/color.png', color[:, :, ::-1])
         return color, depth
 
 
