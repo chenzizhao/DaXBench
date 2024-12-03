@@ -7,7 +7,7 @@ import numpy as np
 import optax
 from jax import custom_vjp, random, vmap
 from jax._src.lax.control_flow import fori_loop
-from jax.random import KeyArray
+from jax.random import PRNGKey
 
 
 class ClothState(NamedTuple):
@@ -17,7 +17,7 @@ class ClothState(NamedTuple):
     primitive1: jnp.ndarray
     action0: jnp.ndarray
     action1: jnp.ndarray
-    key: KeyArray
+    key: PRNGKey
     cur_step: jnp.ndarray
     stiffness: jnp.ndarray
     mu: jnp.ndarray
