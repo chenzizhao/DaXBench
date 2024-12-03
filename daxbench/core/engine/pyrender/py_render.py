@@ -23,7 +23,9 @@ class BasicPyRenderer:
         wood_mesh = pyrender.Mesh.from_trimesh(wood_trimesh)
         ground_size = np.array([1.0, 1.0, 0])
         self.wood_node = scene.add(wood_mesh)
-        self.wood_node.scale *= ground_size / (wood_mesh.bounds[1] - wood_mesh.bounds[0])
+        mesh_size = wood_mesh.bounds[1] - wood_mesh.bounds[0]  ## xx,xx,0.0
+        mesh_size[2] = 1.0
+        self.wood_node.scale *= ground_size / mesh_size
         self.wood_node.scale[2] = 1.0
         self.wood_node.translation = [0.48 * ground_size[0], 0.46 * ground_size[1], -0.02]
 
