@@ -350,6 +350,8 @@ class SimpleMPMSimulator:
             loss += (nstate.lamda * g.lamda).sum()
 
             for i in range(self.conf.n_primitive):
+                # TODO: either x or y is float0, or x * y are integers.
+                # bwd jax is mad. downgrade from 0.4.30 to 0.3.14?
                 sum_val = jax.tree_util.tree_map(lambda x, y: (x * y).sum(), nstate.primitives[i], g.primitives[i])
                 loss += jax.tree_util.tree_reduce(lambda x, y: x + y, sum_val)
 
