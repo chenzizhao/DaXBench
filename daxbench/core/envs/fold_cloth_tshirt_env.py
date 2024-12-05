@@ -50,7 +50,7 @@ class FoldTshirtEnv(ClothEnv):
         self.observation_size = 1082
 
     def create_cloth_mask(self, conf):
-        img = cv2.imread(f"{my_path}/others/t-shirt.jpg")
+        img = cv2.imread(f"{my_path}/others/thicker_black_ring.jpg")
 
         size = conf.N // 2
         h_size = size // 2

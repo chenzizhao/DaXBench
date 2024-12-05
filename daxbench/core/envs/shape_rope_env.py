@@ -129,6 +129,7 @@ class ShapeRopeEnv(MPMEnv):
         for i in range(step):
             actions = self.random_policy(self.batch_size)
             actions[:, 1] = 0
+            actions = jnp.array(actions)  # works even without git
             # state, reward, done, info = env.step_with_render(actions, self.state)
             state, reward, done, info = self.step_diff(actions, self.state)
             self.state = info["state"]
@@ -174,7 +175,7 @@ class ShapeRopeEnv(MPMEnv):
         # initialize state after adding particles and primitives, important!
         self.initialize_after_adding_particle_primitives(state)
 
-        self.random_push(step=2)
+        # self.random_push(step=2)
         obs = self.get_obs(self.state)
         self.observation_size = obs.shape[-1]
 
